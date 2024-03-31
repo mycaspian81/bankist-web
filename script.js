@@ -10,6 +10,7 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const closeCookie = document.querySelector('.btn--close-cookie');
 const btnScrolTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const navLinks = document.querySelector('.nav__links');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -74,3 +75,27 @@ btnScrolTo.addEventListener('click', e => {
 // btnScrolTo.onclick = function () {
 //   alert('hello');
 // };
+
+// const randomInt = (min, max) => {
+//   return Math.trunc(Math.random() * (max - min + 1) + min);
+// };
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+// document.querySelectorAll('.nav__link').forEach(el => {
+//   el.addEventListener('click', e => {
+//     e.preventDefault();
+//     const id = el.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+navLinks.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
