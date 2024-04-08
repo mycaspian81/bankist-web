@@ -11,6 +11,9 @@ const closeCookie = document.querySelector('.btn--close-cookie');
 const btnScrolTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 const navLinks = document.querySelector('.nav__links');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -98,4 +101,32 @@ navLinks.addEventListener('click', e => {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
+});
+
+// tabs.forEach(function (el) {
+//   eltabsContainer = document.querySelector().addEventListener('click', e => {
+//     e.preventDefault();
+//     el.classList.add('operations__tab--active');
+//     [...el.parentElement.children].forEach(elm => {
+//       if (elm !== el) elm.classList.remove('operations__tab--active');
+//     });
+//   });
+// });
+
+tabsContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+  // Guard Clause
+  if (!clicked) return;
+
+  tabs.forEach(e => e.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Set Content
+  const tabContent = document.querySelector(
+    `.operations__content--${clicked.getAttribute('data-tab')}`
+  );
+  tabsContent.forEach(function (e) {
+    e.classList.remove('operations__content--active');
+  });
+  tabContent.classList.add('operations__content--active');
 });
